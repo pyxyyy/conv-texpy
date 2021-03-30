@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="_static/bootstrap.min.css">
+
+    <title>tex.py</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <!-- Which experiment are we running? -->
+      <a class="navbar-brand" href="#" role="button" data-toggle="modal" data-target="#config-modal">{{exp}}</a>
+
+
+      <div class="btn-toolbar" role="toolbar" aria-label="Task selector">
+        <!-- task selection -->
+        <div id="task-selection" class="input-group btn-group mr-2" role="group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Task</div>
+          </div>
+          <input id="task-id" type="number" class="form-control" min="1" max="1" value="1" />
+          <div class="input-group-append">
+            <div id="task-max-text" class="input-group-text">of 500</div>
+          </div>
+          <button id="task-prev" type="button" class="btn btn-secondary"><</button>
+          <button id="task-next" type="button" class="btn btn-secondary">></button>
+        </div>
+
+        <!-- assignment selection -->
+        <div id="assignment-selection" class="btn-group mr-2" role="group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Assn</div>
+          </div>
+          <button type="button" class="btn btn-secondary">A</button>
+          <button type="button" class="btn btn-secondary">1</button>
+          <button type="button" class="btn btn-secondary">2</button>
+          <button type="button" class="btn btn-secondary">3</button>
+          <button type="button" class="btn btn-secondary">N</button>
+        </div>
+        <!-- view raw -->
+        <button id="view-raw-btn" type="button" class="btn btn-secondary mr-2" data-toggle="modal" data-target="#raw-modal">Raw</button>
+
+        <!-- search bar -->
+        <div class="dropdown">
+          <div class="btn btn-secondary dropdown-toggle" id="filterWorkerButton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Filter Worker
+          </div>
+          <div id="filter-worker-list" class="dropdown-menu" aria-labelledby="filterWorkerButton">
+            <a class="dropdown-item" href="#">All</a>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+
+    <div class="container">
+      <iframe
+              id="iframe"
+              height="{{exp.config.FrameHeight}}"
+              width="100%"
+              style="border: 0;"
+              marginheight="0"
+              marginwidth="0"
+              src="/api/render/0">
+      </iframe>
+    </div>
+
+    <!-- Modals -->
+
+    <!-- config modal -->
+    <div class="modal" id="config-modal" tabindex="-1" role="dialog" aria-labelledby="config-modal-title" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="config-modal-title">Task configuration</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <pre class="modal-body">
+{{ exp.config | tojson(2) }}
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- raw modal -->
+    <div class="modal" id="raw-modal" tabindex="-1" role="dialog" aria-labelledby="raw-modal-title" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="raw-modal-title">Raw assignment output</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <pre id="raw-contents" class="modal-body">
+          </pre>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="_static/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="_static/popper.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="_static/texpy.js"></script>
+    <script type="text/javascript" >
+      iface = new Interface();
+      iface.setUp();
+    </script>
+  </body>
+</html>

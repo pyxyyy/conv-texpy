@@ -1,0 +1,30 @@
+# Additional variables to be used as arguments for the scripts below.
+variables: {}
+    # Example: The host where HTML and JavaScript files will uploaded.
+    # host: "example.com"
+# Hooks to be run at certain places in the code. All hooks have as input
+# an 'Experiment' object ('exp') that contains information about paths, etc.
+# and all the variables defined above.
+hooks:
+    # Run right after initialization and during updates.
+    init/post:
+        # Here, we're just copying over the HTML from the static
+        # directory.
+        - "rm -rf {exp.mypath}/static"
+        - "cp -r static {exp.mypath}"
+
+        # This example copies contents from an NPM package over.
+        # - "rm -rf {exp.path}/static"
+        # - "npm run package"
+        # - "mv dist experiments/{exp.path}/static"
+    # Run before launching a task.
+    launch/pre: []
+        # In this example, we replace 'SERVER_URL' tag to the host we're
+        # uploading to (see variables above) and copies these to said host
+        # through SSH.
+        # - "find {exp.path} -type f -print0 | xargs -0 sed -i'.orig' -e 's#{{{{SERVER_URL}}}}#https://{host}/texpy/{exp.type}/{exp.idx}#g'"
+        # - "ssh {host} 'rm -rf public_html/texpy/{exp.type}/{exp.idx}'"
+        # - "ssh {host} 'mkdir -p public_html/texpy/{exp.type}'"
+        # - "scp -r {exp.path} {host}:public_html/texpy/{exp.type}/{exp.idx}"
+    # Run after launching a task.
+    launch/post: []

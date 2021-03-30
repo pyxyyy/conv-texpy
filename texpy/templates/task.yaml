@@ -1,0 +1,25 @@
+Title: Catchy short title here
+Description: Short description here.
+# How long _on average_ do you expect workers to take for this task?
+EstimatedTime: 120
+# How much do you want to pay workers per hour?
+RewardRate: 12
+# Note: given an estimated time and a reward rate, we'll calculate the
+# right reward for you.
+#Reward: 0.4
+# The number of assignments per HIT
+MaxAssignments: 3
+# If true, we will redo rejected HITs.
+RedoRejectedHits: false
+# How long you expect to take to approve HITs in seconds.
+# Workers prefer a smaller number here.
+ApprovalTime: 172800 # 2 days
+# Size of the task IFrame on AMT.
+FrameHeight: 2000
+# Keywords for AMT search
+Keywords: good,keywords,here
+# Qualifications for the task.
+Qualifications:
+- country in US,CA,GB
+- hits_approved > 500
+- percent_approved > 95
