@@ -1,5 +1,5 @@
 ============================================================
-tex.py - an experiment framework for Amazon Mechanical Turk.
+A stable clone of https://github.com/arunchaganty/texpy for the Square Conversations team's use.
 ============================================================
 
 You are running a suite of experiments with AMT, perhaps to collect lots
