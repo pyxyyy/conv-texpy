@@ -9,24 +9,31 @@ repository = "https://github.com/arunchaganty/texpy"
 homepage = "https://github.com/arunchaganty/texpy"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.9"
 toml = "^0.9"
 boto3 = "^1.9"
 jinja2 = "^2.10"
-boto = "^2.49" 
+boto = "^2.49"
 tqdm = "^4.32"
 bottle = "^0.12"
-pyyaml = "^5.1"
-numpy = "^1.17"
+pyyaml = "^6.0"
+numpy = "^2.0"
 scipy = "^1.3"
 sphinx = "^2.4.4"
 readthedocs-sphinx-ext = "^1.0.1"
 sphinx_rtd_theme = "^0.4.3"
+typed-ast = "^1.5.5"
+markupsafe = "1.1.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
 pytest-cov = "^2.4"
-mypy = "^0.720.0"
+mypy = "^1.0.0"
+
+[[tool.poetry.source]]
+name = "artifactory"
+priority = "primary"
+url = "https://artifactory.global.square/artifactory/api/pypi/block-pypi/simple"
 
 [tool.poetry.scripts]
 texpy = 'texpy.main:main'
