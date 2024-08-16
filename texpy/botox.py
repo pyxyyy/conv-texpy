@@ -28,11 +28,6 @@ def get_client(use_prod: bool = False):
         return boto3.client('mturk', region_name="us-east-1", endpoint_url='https://mturk-requester-sandbox.us-east-1.amazonaws.com')
 
 
-def get_account_balance(conn) -> float:
-    response = conn.get_account_balance()
-    return response['AvailableBalance']
-
-
 # region: qualifications
 def create_qualification(conn, name: str, keywords: str, description: str, auto_granted: bool = True,
                          auto_granted_value: int = 100) -> str:
