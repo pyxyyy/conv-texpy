@@ -123,7 +123,7 @@ def launch_task(exp: ExperimentBatch,
     logger.info(f"We're going to launch {len(inputs)}x{config['MaxAssignments']} tasks {'(really!)' if use_prod else '(in a sandbox)'}")
     logger.info("Using the following qualifications:\n" + yaml.safe_dump(config['Qualifications']))
     logger.info(f"reward=${reward:0.2f}; time={estimated_time}s; rate=${reward_rate:0.2f}")
-    logger.info(f"cost=${total_cost:0.2f}; balance=${float(botox.get_account_balance(conn)):0.2f}")
+    logger.info(f"cost=${total_cost:0.2f}")
 
     if force_user_input("Are you sure you want to launch? ", ["y", "n"]) == "n":
         sys.exit(1)
